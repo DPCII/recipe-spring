@@ -1,4 +1,4 @@
-package com.sample.recipe;
+package com.sample.recipe_spring;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
