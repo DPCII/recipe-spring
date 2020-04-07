@@ -6,6 +6,7 @@ import com.sample.recipe_spring.models.Recipe;
 import com.sample.recipe_spring.repositories.CategoryRepository;
 import com.sample.recipe_spring.repositories.RecipeRepository;
 import com.sample.recipe_spring.repositories.UnitOfMeasureRepository;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
@@ -13,6 +14,7 @@ import java.math.BigDecimal;
 import java.util.HashSet;
 import java.util.Set;
 
+@Slf4j
 @Component
 public class BootStrapData implements CommandLineRunner {
 
@@ -28,6 +30,7 @@ public class BootStrapData implements CommandLineRunner {
 
     public void loadData() throws Exception {
 
+        log.debug("Loading initialization data...");
         Recipe recipe1 = new Recipe();
         recipe1.setCategories(categoryRepository.findByDescription("Seafood"));
         recipe1.setCookTime(5);
