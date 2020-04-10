@@ -1,5 +1,7 @@
 package com.sample.recipe_spring.services;
 
+import com.sample.recipe_spring.converters.RecipeCommandToRecipe;
+import com.sample.recipe_spring.converters.RecipeToRecipeCommand;
 import com.sample.recipe_spring.models.Recipe;
 import com.sample.recipe_spring.repositories.RecipeRepository;
 import org.junit.jupiter.api.BeforeEach;
@@ -11,12 +13,15 @@ import java.util.HashSet;
 import java.util.Optional;
 import java.util.Set;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.Mockito.*;
 
 class RecipeServiceImplTest {
 
     RecipeServiceImpl recipeService;
+    RecipeCommandToRecipe recipeCommandToRecipe;
+    RecipeToRecipeCommand recipeToRecipeCommand;
 
     @Mock
     RecipeRepository recipeRepository;
@@ -24,7 +29,7 @@ class RecipeServiceImplTest {
     @BeforeEach
     void setUp() {
         MockitoAnnotations.initMocks(this);
-        recipeService  = new RecipeServiceImpl(recipeRepository);
+        recipeService  = new RecipeServiceImpl(recipeRepository, recipeCommandToRecipe, recipeToRecipeCommand);
     }
 
     @Test
