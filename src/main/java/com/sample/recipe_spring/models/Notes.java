@@ -21,4 +21,8 @@ public class Notes {
     @Lob
     private String notes;
 
+    @Override
+    public String toString() {
+        return notes;
+    }
 }
