@@ -36,7 +36,7 @@ class RecipeServiceImplTest {
     void getRecipes() {
 
         Recipe recipe = new Recipe();
-        HashSet recipeData = new HashSet();
+        Set<Recipe> recipeData = new HashSet<>();
         recipeData.add(recipe);
 
         when(recipeRepository.findAll()).thenReturn(recipeData);
@@ -59,5 +59,15 @@ class RecipeServiceImplTest {
 
         assertNotNull(recipeReturned);
         verify(recipeRepository, times(1)).findById(anyLong());
+    }
+
+    @Test
+    void deleteById() {
+        Recipe recipe = new Recipe();
+        recipe.setId(1L);
+
+        recipeService.deleteById(recipe.getId());
+
+        verify(recipeRepository, times(1)).deleteById(anyLong());
     }
 }
