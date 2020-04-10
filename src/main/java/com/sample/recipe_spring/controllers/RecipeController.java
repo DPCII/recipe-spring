@@ -1,5 +1,6 @@
 package com.sample.recipe_spring.controllers;
 
+import com.sample.recipe_spring.commands.RecipeCommand;
 import com.sample.recipe_spring.services.RecipeService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,5 +21,12 @@ public class RecipeController {
         model.addAttribute("recipe", recipeService.getRecipeById(Long.valueOf(id)));
 
         return "recipe/show";
+    }
+
+    @RequestMapping({"/recipe/new"})
+    public String newRecipe(Model model) {
+        model.addAttribute("recipe", new RecipeCommand());
+
+        return "recipe/recipeform";
     }
 }
