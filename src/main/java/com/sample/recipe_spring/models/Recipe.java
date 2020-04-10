@@ -1,14 +1,13 @@
 package com.sample.recipe_spring.models;
 
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.Set;
 
-@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
@@ -27,7 +26,7 @@ public class Recipe {
     private String directions;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "recipe")
-    private Set<Ingredient> ingredients;
+    private Set<Ingredient> ingredients = new HashSet<>();
 
     @Lob
     private Byte[] image;
